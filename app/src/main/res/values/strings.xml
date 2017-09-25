@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Password Checker</string>
+    <string name="UsernameTextLabel">Username: </string>
+    <string name="PasswordTextLabel">Password:</string>
+    <string name="PasswordCorrectText">Enter Password</string>
+    <string name="UsernameInput"></string>
+    <string name="PasswordInputId"></string>
+    <string name="PasswordInput" />
+</resources>
