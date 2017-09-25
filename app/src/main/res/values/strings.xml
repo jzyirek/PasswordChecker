@@ -6,4 +6,6 @@
     <string name="UsernameInput"></string>
     <string name="PasswordInputId"></string>
     <string name="PasswordInput" />
+    <string name="SuccessViewLabel">Success</string>
+    <string name="LogoutButton">Log Out</string>
 </resources>
