@@ -8,4 +8,5 @@
     <string name="PasswordInput" />
     <string name="SuccessViewLabel">Success</string>
     <string name="LogoutButton">Log Out</string>
+    <string name="SubmitButton">Submit</string>
 </resources>

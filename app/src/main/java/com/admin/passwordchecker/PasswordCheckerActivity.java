@@ -1,18 +1,21 @@
 package com.admin.passwordchecker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
-public class PasswordCheckerActivity extends AppCompatActivity implements OnEditorActionListener
+public class PasswordCheckerActivity extends AppCompatActivity implements OnClickListener
 {
     private EditText UsernameInputId;
     private EditText PasswordInputId;
     private TextView PasswordCorrectId;
+    private Button  SubmitButtonId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,15 +26,15 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnEdit
         UsernameInputId = (EditText) findViewById(R.id.UsernameInputId);
         PasswordInputId = (EditText) findViewById(R.id.PasswordInputId);
         PasswordCorrectId = (TextView) findViewById(R.id.PasswordCorrectId);
+        SubmitButtonId = (Button) findViewById(R.id.SubmitButtonId);
 
-        PasswordInputId.setOnEditorActionListener(this);
+        SubmitButtonId.setOnClickListener(this);
     }
 
     public void verifyPassword()
     {
         String username = "jzyirek";
         String validPassword = "calculate";
-        String correctPassword = "Correct!";
         String incorrectPassword = "Wrong!";
         String userIdTest = UsernameInputId.getText().toString();
         String passwordIdTest = PasswordInputId.getText().toString();
@@ -40,7 +43,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnEdit
         {
             if(passwordIdTest.equals(validPassword))
             {
-                PasswordCorrectId.setText(correctPassword);
+                loginSuccess(username);
             }
             else
             {
@@ -52,15 +55,20 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnEdit
             PasswordCorrectId.setText("Invalid Username");
         }
     }
-    @Override
-    public boolean onEditorAction(TextView textView, int actionId, KeyEvent event)
+
+    public void loginSuccess(String username)
     {
-        if (actionId == EditorInfo.IME_ACTION_DONE ||
-            actionId == EditorInfo.IME_ACTION_UNSPECIFIED ||
-            event.getKeyCode() == KeyEvent.KEYCODE_ENTER)
+        Intent intent = new Intent(this, LoginSuccess.class);
+        intent.putExtra(UsernameInputId.toString(),username);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        if (view.getId() == R.id.SubmitButtonId)
         {
             verifyPassword();
         }
-        return false;
     }
 }
