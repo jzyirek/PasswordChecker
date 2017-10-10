@@ -9,4 +9,14 @@
     <string name="SuccessViewLabel">Success</string>
     <string name="LogoutButton">Log Out</string>
     <string name="SubmitButton">Submit</string>
+    <string name="LanguageViewLabel">Language:</string>
+    <string name="EnglishRadioId">English</string>
+    <string name="SpanishRadioSelect">Spanish</string>
+    <string name="NameLabel">Name:</string>
+    <string name="EmailAddressLabel">Email Address:</string>
+    <string name="NameInput" />
+    <string name="EmailAddressInput" />
+    <string name="DateViewLabel">Presentation Date:</string>
+    <string name="TimeViewLabel">Presentation Time:</string>
+    <string name="Hint">calculate</string>
 </resources>
