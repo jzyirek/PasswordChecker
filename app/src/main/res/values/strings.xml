@@ -19,4 +19,10 @@
     <string name="DateViewLabel">Presentation Date:</string>
     <string name="TimeViewLabel">Presentation Time:</string>
     <string name="Hint">calculate</string>
+    <string name="ClassificationLabel">Please select one</string>
+    <string-array name="classification">
+        <item>Student</item>
+        <item>Faculity</item>
+
+    </string-array>
 </resources>
