@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PasswordCheckerActivity extends AppCompatActivity implements OnClickListener, TextView.OnEditorActionListener
+public class PasswordCheckerActivity extends AppCompatActivity implements OnClickListener
 {
     private EditText UsernameInputId;
     private EditText PasswordInputId;
@@ -28,9 +28,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
         PasswordInputId = (EditText) findViewById(R.id.PasswordInputId);
         SubmitButtonId = (Button) findViewById(R.id.SubmitButtonId);
 
-        PasswordInputId.setOnEditorActionListener(this);
         SubmitButtonId.setOnClickListener(this);
-        SubmitButtonId.setClickable(false);
     }
 
     public void verifyPassword()
@@ -43,7 +41,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
         {
             if(passwordIdTest.equals(validPassword))
             {
-                SubmitButtonId.setClickable(true);
+                loginSuccess(username);
             }
         }
         else
@@ -64,18 +62,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
     {
         if (view.getId() == R.id.SubmitButtonId)
         {
-            loginSuccess(username);
-        }
-    }
-
-    @Override
-    public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent)
-    {
-        if (actionId == EditorInfo.IME_ACTION_DONE ||
-                actionId == EditorInfo.IME_ACTION_UNSPECIFIED)
-        {
             verifyPassword();
         }
-        return false;
     }
 }
