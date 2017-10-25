@@ -77,6 +77,7 @@ public class LoginSuccess extends AppCompatActivity
         });
     }
 
+
     private void setStringsToEnglish() {
 
         questionString.setText(getResources().getString(R.string.question_english));

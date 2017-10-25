@@ -44,4 +44,5 @@
     <string name="state_prompt_english">Enter your state: </string>
     <string name="state_prompt_spanish">Ingresa tu estado: </string>
     <string name="city_prompt_english">Enter your city: </string>
-    <string name="city_prompt_spanish">Ingresa tu ciudad: </string></resources>
+    <string name="city_prompt_spanish">Ingresa tu ciudad: </string>
+</resources>

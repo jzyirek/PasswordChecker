@@ -31,6 +31,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
         SubmitButtonId.setOnClickListener(this);
     }
 
+
     public void verifyPassword()
     {
         String validPassword = "calculate";
