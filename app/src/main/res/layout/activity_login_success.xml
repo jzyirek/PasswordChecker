@@ -4,182 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightRed"
+    android:background="@color/lightBlue"
     tools:context="com.admin.passwordchecker.LoginSuccess"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <TextView
+        android:id="@+id/LanguageViewId"
+        android:layout_width="73dp"
+        android:layout_height="25dp"
+        android:text="@string/LanguageViewLabel"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="42dp" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="459dp"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="1dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <TextView
+        android:id="@+id/ClassificationLabelId"
+        android:layout_width="128dp"
+        android:layout_height="28dp"
+        android:text="@string/ClassificationLabel"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="120dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <Spinner
+        android:id="@+id/PersonClassificationId"
+        android:layout_width="212dp"
+        android:layout_height="31dp"
+        android:entries="@array/classification"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <TextView
+        android:id="@+id/NameLabelId"
+        android:layout_width="75dp"
+        android:layout_height="24dp"
+        android:text="@string/NameLabel"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <EditText
+        android:id="@+id/NameInputId"
+        android:layout_width="253dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/NameInput"
+        android:textColor="?attr/colorPrimaryDark"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <TextView
+        android:id="@+id/EmailAddressLabelId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EmailAddressLabel"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="227dp" />
+
+    <EditText
+        android:id="@+id/EmailAddressInputId"
+        android:layout_width="356dp"
+        android:layout_height="59dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/EmailAddressInput"
+        android:textColor="@color/colorPrimaryDark"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <Button
+        android:id="@+id/TimeSelectButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TimeSelectButton"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="346dp" />
+
+    <Button
+        android:id="@+id/SelectDateButtonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SelectDateButton"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="437dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="234dp"
+        android:layout_height="66dp"
+        android:ems="10"
+        android:inputType="time"
+        tools:layout_editor_absoluteY="346dp"
+        tools:layout_editor_absoluteX="144dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="230dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteY="437dp"
+        tools:layout_editor_absoluteX="144dp" />
+
+    <TextView
+        android:id="@+id/WelcomeLogoId"
+        android:layout_width="364dp"
+        android:layout_height="38dp"
+        android:text="@string/WelcomeLogo"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <RadioGroup
+        android:id="@+id/languageSelectors"
+        android:layout_width="327dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="67dp">
+
+        <RadioButton
+            android:id="@+id/EnglishRadioSelectId"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_weight="1.01"
+            android:text="English" />
 
+        <RadioButton
+            android:id="@+id/SpanishRadioSelectId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Spanish" />
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    </RadioGroup>
 
-                <TextView
-                    android:id="@+id/LanguageViewId"
-                    android:layout_width="73dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
-                    android:text="@string/LanguageViewLabel"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="16dp" />
-
-                <RadioButton
-                    android:id="@+id/EnglishRadioSelectId"
-                    android:layout_width="95dp"
-                    android:layout_height="31dp"
-                    android:layout_marginEnd="96dp"
-                    android:layout_marginStart="106dp"
-                    android:checked="true"
-                    android:text="@string/EnglishRadioId"
-                    tools:layout_editor_absoluteX="154dp"
-                    tools:layout_editor_absoluteY="16dp" />
-
-                <RadioButton
-                    android:id="@+id/SpanishRadioSelectId"
-                    android:layout_width="95dp"
-                    android:layout_height="31dp"
-                    android:layout_marginEnd="96dp"
-                    android:layout_marginStart="106dp"
-                    android:text="@string/SpanishRadioSelect"
-                    tools:layout_editor_absoluteX="154dp"
-                    tools:layout_editor_absoluteY="16dp" />
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/ClassificationLabelId"
-                android:layout_width="128dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="16dp"
-                android:text="@string/ClassificationLabel"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="67dp" />
-
-            <Spinner
-                android:id="@+id/PersonClassificationId"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="43dp"
-                android:layout_marginStart="41dp"
-                android:entries="@array/classification"
-                tools:layout_editor_absoluteX="176dp"
-                tools:layout_editor_absoluteY="65dp" />
-
-            <TextView
-                android:id="@+id/NameLabelId"
-                android:layout_width="75dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:text="@string/NameLabel"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="119dp" />
-
-            <EditText
-                android:id="@+id/NameInputId"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="122dp"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/NameInput"
-                android:textColor="?attr/colorPrimaryDark"
-                tools:layout_editor_absoluteX="122dp"
-                tools:layout_editor_absoluteY="101dp" />
-
-            <TextView
-                android:id="@+id/EmailAddressLabelId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/EmailAddressLabel"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="174dp" />
-
-            <EditText
-                android:id="@+id/EmailAddressInputId"
-                android:layout_width="319dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:text="@string/EmailAddressInput"
-                android:textColor="@color/colorPrimaryDark"
-                tools:layout_editor_absoluteX="122dp"
-                tools:layout_editor_absoluteY="160dp" />
-
-            <TextView
-                android:id="@+id/TimeViewLabelId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/TimeViewLabel"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="211dp" />
-
-            <TimePicker
-                android:id="@+id/PresentationTimeId"
-                android:layout_width="326dp"
-                android:layout_height="111dp"
-                android:layout_marginStart="16dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="242dp" />
-
-            <TextView
-                android:id="@+id/DateViewLabelId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/DateViewLabel"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="245dp"
-                tools:layout_editor_absoluteY="210dp" />
-
-            <DatePicker
-                android:id="@+id/PresentationDateId"
-                android:layout_width="378dp"
-                android:layout_height="497dp"
-                android:layout_marginEnd="23dp"
-                tools:layout_editor_absoluteX="157dp"
-                tools:layout_editor_absoluteY="382dp" />
-
-        </LinearLayout>
-
-
-    </ScrollView>
 </android.support.constraint.ConstraintLayout>
