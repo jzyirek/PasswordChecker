@@ -1,5 +1,6 @@
 package com.admin.passwordchecker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,9 @@ public class LoginSuccess extends AppCompatActivity
     private TextView welcomeLogo;
     private TextView languageView;
     private String languagePreference;
+    private TextView questionString;
+    private TextView name;
+    private TextView emailAddress;
     private RadioGroup languageSelectors;
     private RadioButton englishRadio;
     private RadioButton spanishRadio;
@@ -25,6 +29,7 @@ public class LoginSuccess extends AppCompatActivity
     private EditText emailAddressInput;
     private Button selectTime;
     private Button selectDate;
+    private String message;
 
     private Spinner spinner;
     private ArrayAdapter<CharSequence> spinnerAdapter;
@@ -45,6 +50,14 @@ public class LoginSuccess extends AppCompatActivity
         emailAddressInput = (EditText) findViewById(R.id.EmailAddressInputId);
         selectTime = (Button) findViewById(R.id.TimeSelectButtonId);
         selectDate = (Button) findViewById(R.id.SelectDateButtonId);
+        questionString = (TextView) findViewById(R.id.ClassificationLabelId);
+        name = (TextView) findViewById(R.id.NameLabelId);
+        emailAddress = (TextView) findViewById(R.id.EmailAddressLabelId);
+
+        Intent intent = getIntent();
+        message = intent.getStringExtra("username");
+
+        welcomeLogo.setText("Welcome " + message);
     }
 
     private void init()
@@ -80,10 +93,11 @@ public class LoginSuccess extends AppCompatActivity
 
     private void setStringsToEnglish() {
 
-        questionString.setText(getResources().getString(R.string.question_english));
-        languagePreferencePrompt.setText(getResources().getString(R.string.lang_pref_english));
-        cityPrompt.setText(getResources().getString(R.string.city_prompt_english));
-        statePrompt.setText(getResources().getString(R.string.state_prompt_english));
+        questionString.setText("Please Select One:");
+        languageView.setText("Language:");
+        name.setText("Name:");
+        emailAddress.setText("Email Address:");
+        welcomeLogo.setText("Welcome " + message);
 
         //Set spinner data again
         spinnerAdapter = ArrayAdapter.createFromResource(LoginSuccess.this, R.array.question_array_english, android.R.layout.simple_spinner_item);
@@ -91,27 +105,31 @@ public class LoginSuccess extends AppCompatActivity
         spinner.setAdapter(spinnerAdapter);
     }
 
-    private void setStringsToSpanish() {
+    private void setStringsToSpanish()
+    {
 
-        questionString.setText(getResources().getString(R.string.question_spanish));
-        languagePreferencePrompt.setText(getResources().getString(R.string.lang_pref_spanish));
-        cityPrompt.setText(getResources().getString(R.string.city_prompt_spanish));
-        statePrompt.setText(getResources().getString(R.string.state_prompt_spanish));
+        questionString.setText("Por favor, seleccione uno:");
+        languageView.setText("Idomia:");
+        name.setText("Tu nombre:");
+        emailAddress.setText("Dirección de correo electrónico:");
+        welcomeLogo.setText("Bienvenido " + message);
 
         //Set spinner data again
-        spinnerAdapter = ArrayAdapter.createFromResource(MainActivity.this, R.array.question_array_spanish, android.R.layout.simple_spinner_item);
+        spinnerAdapter = ArrayAdapter.createFromResource(LoginSuccess.this, R.array.question_array_spanish, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
     }
 
-    private void setUserInfoWithEnteredData() {
+    private void setUserInfoWithEnteredData()
+    {
         String memberStatus = spinner.getSelectedItem().toString();
-        userInfo.setInfo(languagePreference, memberStatus, cityField.getText().toString(), stateField.getText().toString());
+        userInfo.setInfo(languagePreference, memberStatus, name.getText().toString(), emailAddress.getText().toString());
         userInfo.print();
     }
 
     //We save all the information that was entered in into this object when you click the submit button.
-    private class UserInfo {
+    private class UserInfo
+    {
 
         String languagePreference;
         String memberStatus;
@@ -119,7 +137,8 @@ public class LoginSuccess extends AppCompatActivity
         String state;
         Date currentDate;
 
-        public UserInfo() {
+        public UserInfo()
+        {
 
             //Sets the current date to "right now" based on phone's internal clock
             currentDate = new Date();
@@ -131,7 +150,8 @@ public class LoginSuccess extends AppCompatActivity
             state = "CA";
         }
 
-        void setInfo(String languagePreference, String memberStatus, String city, String state) {
+        void setInfo(String languagePreference, String memberStatus, String city, String state)
+        {
             this.languagePreference = languagePreference;
             this.memberStatus = memberStatus;
             this.city = city;
