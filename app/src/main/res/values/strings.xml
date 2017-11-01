@@ -20,8 +20,8 @@
     <string name="TimeViewLabel">Presentation Time:</string>
     <string name="Hint">calculate</string>
     <string name="ClassificationLabel">Please select one</string>
-    <string name="TimeSelectButton">Select Time</string>
-    <string name="SelectDateButton">Select Date</string>
+    <string name="TimeSelectButton">Time</string>
+    <string name="SelectDateButton">Date</string>
     <string name="WelcomeLogo" />
     <string-array name="question_array_english">
         <item> Student</item>

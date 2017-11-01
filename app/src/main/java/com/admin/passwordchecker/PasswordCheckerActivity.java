@@ -53,7 +53,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
 
     public void loginSuccess(String username)
     {
-        Intent intent = new Intent(this, LoginSuccess.class);
+        Intent intent = new Intent(PasswordCheckerActivity.this, LoginSuccess.class);
         intent.putExtra(UsernameInputId.toString(),username);
         startActivity(intent);
     }

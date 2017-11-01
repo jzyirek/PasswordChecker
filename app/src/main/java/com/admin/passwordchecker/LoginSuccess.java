@@ -31,7 +31,7 @@ public class LoginSuccess extends AppCompatActivity
     private Button selectDate;
     private String message;
 
-    private Spinner spinner;
+    private Spinner personClassification;
     private ArrayAdapter<CharSequence> spinnerAdapter;
 
     private UserInfo userInfo;
@@ -44,44 +44,53 @@ public class LoginSuccess extends AppCompatActivity
 
         welcomeLogo = (TextView) findViewById(R.id.WelcomeLogoId);
         languageView = (TextView) findViewById(R.id.LanguageViewId);
+        languageSelectors = (RadioGroup) findViewById(R.id.languageSelectors) ;
         englishRadio = (RadioButton) findViewById(R.id.EnglishRadioSelectId);
         spanishRadio = (RadioButton) findViewById(R.id.SpanishRadioSelectId);
-        nameInput = (EditText) findViewById(R.id.NameInputId);
-        emailAddressInput = (EditText) findViewById(R.id.EmailAddressInputId);
-        selectTime = (Button) findViewById(R.id.TimeSelectButtonId);
-        selectDate = (Button) findViewById(R.id.SelectDateButtonId);
         questionString = (TextView) findViewById(R.id.ClassificationLabelId);
         name = (TextView) findViewById(R.id.NameLabelId);
         emailAddress = (TextView) findViewById(R.id.EmailAddressLabelId);
+        personClassification = (Spinner) findViewById(R.id.PersonClassificationId);
+
+        selectTime = (Button) findViewById(R.id.TimeSelectButtonId);
+        selectDate = (Button) findViewById(R.id.SelectDateButtonId);
+        nameInput = (EditText) findViewById(R.id.NameInputId);
+        emailAddressInput = (EditText) findViewById(R.id.EmailAddressInputId);
 
         Intent intent = getIntent();
-        message = intent.getStringExtra("username");
+        message = intent.getExtras().getString("username");
 
         welcomeLogo.setText("Welcome " + message);
+
+        init();
     }
 
     private void init()
     {
 
-        /******* Default settings ****/
+//        /******* Default settings ****/
         userInfo = new UserInfo();
 
         englishRadio.setChecked(true);
         // Create an ArrayAdapter using the string array and a default spinner layout
         spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.question_array_english, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
+//        // Specify the layout to use when the list of choices appears
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(spinnerAdapter);
+//        // Apply the adapter to the spinner
+        personClassification.setAdapter(spinnerAdapter);
 
-        languageSelectors.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        languageSelectors.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (radioGroup.getCheckedRadioButtonId() == englishRadio.getId()) {
+            public void onCheckedChanged(RadioGroup radioGroup, int i)
+            {
+                if (radioGroup.getCheckedRadioButtonId() == englishRadio.getId())
+                {
                     languagePreference = "English";
                     setStringsToEnglish();
 
-                } else if (radioGroup.getCheckedRadioButtonId() == spanishRadio.getId()) {
+                } else if (radioGroup.getCheckedRadioButtonId() == spanishRadio.getId())
+                {
                     languagePreference = "Spanish";
                     setStringsToSpanish();
 
@@ -98,11 +107,13 @@ public class LoginSuccess extends AppCompatActivity
         name.setText("Name:");
         emailAddress.setText("Email Address:");
         welcomeLogo.setText("Welcome " + message);
+        selectTime.setText("Time");
+        selectDate.setText("Date");
 
         //Set spinner data again
         spinnerAdapter = ArrayAdapter.createFromResource(LoginSuccess.this, R.array.question_array_english, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAdapter);
+        personClassification.setAdapter(spinnerAdapter);
     }
 
     private void setStringsToSpanish()
@@ -110,20 +121,22 @@ public class LoginSuccess extends AppCompatActivity
 
         questionString.setText("Por favor, seleccione uno:");
         languageView.setText("Idomia:");
-        name.setText("Tu nombre:");
+        name.setText("Nombre:");
         emailAddress.setText("Dirección de correo electrónico:");
         welcomeLogo.setText("Bienvenido " + message);
+        selectDate.setText("Fecha");
+        selectTime.setText("Hora");
 
         //Set spinner data again
         spinnerAdapter = ArrayAdapter.createFromResource(LoginSuccess.this, R.array.question_array_spanish, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerAdapter);
+        personClassification.setAdapter(spinnerAdapter);
     }
 
     private void setUserInfoWithEnteredData()
     {
-        String memberStatus = spinner.getSelectedItem().toString();
-        userInfo.setInfo(languagePreference, memberStatus, name.getText().toString(), emailAddress.getText().toString());
+        String classification = personClassification.getSelectedItem().toString();
+        userInfo.setInfo(languagePreference, classification, name.getText().toString(), emailAddress.getText().toString());
         userInfo.print();
     }
 
@@ -132,9 +145,9 @@ public class LoginSuccess extends AppCompatActivity
     {
 
         String languagePreference;
-        String memberStatus;
-        String city;
-        String state;
+        String name;
+        String email;
+        String classification;
         Date currentDate;
 
         public UserInfo()
@@ -145,22 +158,22 @@ public class LoginSuccess extends AppCompatActivity
 
             //Default values
             languagePreference = "English";
-            memberStatus = "Student";
-            city = "Sacramento";
-            state = "CA";
+            classification = "Student";
+            name = "";
+            email = "";
         }
 
-        void setInfo(String languagePreference, String memberStatus, String city, String state)
+        void setInfo(String languagePreference, String classification, String name, String email)
         {
+            this.classification = classification;
             this.languagePreference = languagePreference;
-            this.memberStatus = memberStatus;
-            this.city = city;
-            this.state = state;
+            this.name = name;
+            this.email = email;
         }
 
         //For debugging purposes
         void print()  {
-            Log.d("Filter", "Info "+languagePreference+" "+memberStatus+" "+city+" "+state+" "+ currentDate.toString());
+            Log.d("Filter", "Info "+languagePreference+" "+classification+" "+name+" "+email+" "+ currentDate.toString());
         }
     }
 }
