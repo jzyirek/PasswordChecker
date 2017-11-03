@@ -16,8 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginSuccess"
-                  android:parentActivityName=".PasswordCheckerActivity">
+        <activity
+            android:name=".LoginSuccess"
+            android:parentActivityName=".PasswordCheckerActivity">
+        </activity>
+        <activity
+            android:name=".DatePickerActivity"
+            android:parentActivityName=".LoginSuccess">
+        </activity>
+        <activity
+            android:name=".TimePickerActivity"
+            android:parentActivityName=".LoginSuccess">
         </activity>
     </application>
 

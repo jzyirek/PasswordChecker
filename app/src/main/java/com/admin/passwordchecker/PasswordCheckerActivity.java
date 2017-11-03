@@ -16,6 +16,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
     private EditText UsernameInputId;
     private EditText PasswordInputId;
     private Button  SubmitButtonId;
+    public static final String EXTRA_MESSAGE = "com.admin.passwordchecker";
     private String username = "jzyirek";
 
     @Override
@@ -54,7 +55,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
     public void loginSuccess(String username)
     {
         Intent intent = new Intent(PasswordCheckerActivity.this, LoginSuccess.class);
-        intent.putExtra(UsernameInputId.toString(),username);
+        intent.putExtra(EXTRA_MESSAGE,username);
         startActivity(intent);
     }
 

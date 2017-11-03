@@ -58,7 +58,7 @@ public class LoginSuccess extends AppCompatActivity
         emailAddressInput = (EditText) findViewById(R.id.EmailAddressInputId);
 
         Intent intent = getIntent();
-        message = intent.getExtras().getString("username");
+        message = intent.getStringExtra(PasswordCheckerActivity.EXTRA_MESSAGE);
 
         welcomeLogo.setText("Welcome " + message);
 
