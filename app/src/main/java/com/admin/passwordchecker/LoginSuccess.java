@@ -40,6 +40,8 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
     private String languagePreference;
     private String dateSelected;
     private String timeSelected;
+    private String nameToSave;
+    private String emailToSave;
 
     private Spinner personClassification;
     private ArrayAdapter<CharSequence> spinnerAdapter;
@@ -62,6 +64,9 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
         emailAddress = (TextView) findViewById(R.id.EmailAddressLabelId);
         personClassification = (Spinner) findViewById(R.id.PersonClassificationId);
 
+        date = (EditText) findViewById(R.id.DateEditTextId);
+        time = (EditText) findViewById(R.id.TimeEditTextId);
+
         selectTime = (Button) findViewById(R.id.TimeSelectButtonId);
         selectDate = (Button) findViewById(R.id.SelectDateButtonId);
         submitButton = (Button) findViewById(R.id.SubmitButton2Id);
@@ -78,11 +83,34 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
         message = intent.getStringExtra(PasswordCheckerActivity.EXTRA_MESSAGE);
         timeSelected = intent.getStringExtra("time");
         dateSelected = intent.getStringExtra("date");
+        nameToSave = intent.getStringExtra("nameToSave");
+        emailToSave = intent.getStringExtra("emailToSave");
+
+        if(message == null)
+        {
+            message = intent.getStringExtra("username");
+        }
 
         welcomeLogo.setText("Welcome " + message);
-        date.setText(dateSelected);
-        time.setText(timeSelected);
+        if(dateSelected != null)
+        {
+            date.setText(dateSelected.toString());
+        }
 
+        if(timeSelected != null)
+        {
+            time.setText(timeSelected);
+        }
+
+        if(nameToSave != null)
+        {
+            nameInput.setText(nameToSave.toString());
+        }
+
+        if(emailToSave != null)
+        {
+            emailAddressInput.setText(emailToSave.toString());
+        }
         init();
     }
 
@@ -174,14 +202,34 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
         }
         else
         {
-
+            submit();
         }
+    }
+
+    private void submit()
+    {
+        setUserInfoWithEnteredData();
     }
 
     private void selectDate()
     {
-
         Intent intent = new Intent(LoginSuccess.this, DatePickerActivity.class);
+        intent.putExtra("username",message);
+
+        if(nameInput != null)
+        {
+            intent.putExtra("nameToSave",nameInput.getText().toString());
+        }
+
+        if(emailAddressInput != null)
+        {
+            intent.putExtra("emailToSave",emailAddressInput.getText().toString());
+        }
+
+        if(time != null)
+        {
+            intent.putExtra("time",time.getText().toString());
+        }
         startActivity(intent);
 
     }
@@ -189,6 +237,22 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
     private void selectTime()
     {
         Intent intent = new Intent(LoginSuccess.this, TimePickerActivity.class);
+        intent.putExtra("username",message);
+        if(nameInput != null)
+        {
+            intent.putExtra("nameToSave",nameInput.getText().toString());
+        }
+
+        if(emailAddressInput != null)
+        {
+            intent.putExtra("emailToSave",emailAddressInput.getText().toString());
+        }
+
+
+        if(date != null)
+        {
+            intent.putExtra("date",date.getText().toString());
+        }
         startActivity(intent);
 
     }
