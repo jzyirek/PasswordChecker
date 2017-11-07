@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,22 +15,31 @@ import android.widget.TextView;
 
 import java.util.Date;
 
-public class LoginSuccess extends AppCompatActivity
+public class LoginSuccess extends AppCompatActivity implements View.OnClickListener
 {
     private TextView welcomeLogo;
     private TextView languageView;
-    private String languagePreference;
     private TextView questionString;
     private TextView name;
     private TextView emailAddress;
+
     private RadioGroup languageSelectors;
     private RadioButton englishRadio;
     private RadioButton spanishRadio;
+
     private EditText nameInput;
     private EditText emailAddressInput;
+    private EditText date;
+    private EditText time;
+
     private Button selectTime;
     private Button selectDate;
+    private Button submitButton;
+
     private String message;
+    private String languagePreference;
+    private String dateSelected;
+    private String timeSelected;
 
     private Spinner personClassification;
     private ArrayAdapter<CharSequence> spinnerAdapter;
@@ -54,13 +64,24 @@ public class LoginSuccess extends AppCompatActivity
 
         selectTime = (Button) findViewById(R.id.TimeSelectButtonId);
         selectDate = (Button) findViewById(R.id.SelectDateButtonId);
+        submitButton = (Button) findViewById(R.id.SubmitButton2Id);
+
+        selectDate.setOnClickListener(this);
+        selectTime.setOnClickListener(this);
+        submitButton.setOnClickListener(this);
+
         nameInput = (EditText) findViewById(R.id.NameInputId);
         emailAddressInput = (EditText) findViewById(R.id.EmailAddressInputId);
 
+
         Intent intent = getIntent();
         message = intent.getStringExtra(PasswordCheckerActivity.EXTRA_MESSAGE);
+        timeSelected = intent.getStringExtra("time");
+        dateSelected = intent.getStringExtra("date");
 
         welcomeLogo.setText("Welcome " + message);
+        date.setText(dateSelected);
+        time.setText(timeSelected);
 
         init();
     }
@@ -138,6 +159,38 @@ public class LoginSuccess extends AppCompatActivity
         String classification = personClassification.getSelectedItem().toString();
         userInfo.setInfo(languagePreference, classification, name.getText().toString(), emailAddress.getText().toString());
         userInfo.print();
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        if (view.getId() == R.id.TimeSelectButtonId)
+        {
+            selectTime();
+        }
+        else if (view.getId() == R.id.SelectDateButtonId)
+        {
+            selectDate();
+        }
+        else
+        {
+
+        }
+    }
+
+    private void selectDate()
+    {
+
+        Intent intent = new Intent(LoginSuccess.this, DatePickerActivity.class);
+        startActivity(intent);
+
+    }
+
+    private void selectTime()
+    {
+        Intent intent = new Intent(LoginSuccess.this, TimePickerActivity.class);
+        startActivity(intent);
+
     }
 
     //We save all the information that was entered in into this object when you click the submit button.
