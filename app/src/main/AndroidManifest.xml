@@ -18,16 +18,16 @@
         </activity>
         <activity
             android:name=".LoginSuccess"
-            android:parentActivityName=".PasswordCheckerActivity">
-        </activity>
+            android:parentActivityName=".PasswordCheckerActivity"></activity>
         <activity
             android:name=".DatePickerActivity"
-            android:parentActivityName=".LoginSuccess">
-        </activity>
+            android:parentActivityName=".LoginSuccess"></activity>
         <activity
             android:name=".TimePickerActivity"
-            android:parentActivityName=".LoginSuccess">
-        </activity>
+            android:parentActivityName=".LoginSuccess"></activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".LoginSuccess"></activity>
     </application>
 
 </manifest>
