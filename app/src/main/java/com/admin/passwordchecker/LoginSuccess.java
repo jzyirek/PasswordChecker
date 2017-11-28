@@ -200,7 +200,7 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
         {
             selectDate();
         }
-        else
+        else if (view.getId() == R.id.SubmitButton2Id)
         {
             submit();
         }
@@ -209,6 +209,28 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
     private void submit()
     {
         setUserInfoWithEnteredData();
+        Intent intent = new Intent(LoginSuccess.this, ProfileActivity.class);
+        intent.putExtra("username",message);
+        if(nameInput != null)
+        {
+            intent.putExtra("nameToSave",nameInput.getText().toString());
+        }
+
+        if(emailAddressInput != null)
+        {
+            intent.putExtra("emailToSave",emailAddressInput.getText().toString());
+        }
+
+        if(time != null)
+        {
+            intent.putExtra("time",time.getText().toString());
+        }
+        if(date != null)
+        {
+            intent.putExtra("date",date.getText().toString());
+        }
+        startActivity(intent);
+
     }
 
     private void selectDate()
