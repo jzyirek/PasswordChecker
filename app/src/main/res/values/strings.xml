@@ -52,4 +52,5 @@
     <string name="Project">Current Project</string>
     <string name="TicTacToeButton">Tic Tac Toe</string>
     <string name="Description">I work as a Software Analysis for the State of California. I have also graduated from DeVry Univeristy with a Bachelors of Science in Game and Simulation Programming. For this class I created a Tic Tac Toe game in which players may go head to head with other players.</string>
+    <string name="NextButton">Next</string>
 </resources>
