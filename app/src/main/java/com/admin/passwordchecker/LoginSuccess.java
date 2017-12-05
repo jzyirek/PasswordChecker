@@ -1,6 +1,8 @@
 package com.admin.passwordchecker;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -209,27 +212,30 @@ public class LoginSuccess extends AppCompatActivity implements View.OnClickListe
     private void submit()
     {
         setUserInfoWithEnteredData();
-        Intent intent = new Intent(LoginSuccess.this, ProfileActivity.class);
-        intent.putExtra("username",message);
+        Intent intentGo = new Intent(LoginSuccess.this, ProfileActivity.class);
+        intentGo.putExtra("username",message);
         if(nameInput != null)
         {
-            intent.putExtra("nameToSave",nameInput.getText().toString());
+            intentGo.putExtra("nameToSave",nameInput.getText().toString());
         }
 
         if(emailAddressInput != null)
         {
-            intent.putExtra("emailToSave",emailAddressInput.getText().toString());
+            intentGo.putExtra("emailToSave",emailAddressInput.getText().toString());
         }
 
         if(time != null)
         {
-            intent.putExtra("time",time.getText().toString());
+            intentGo.putExtra("time",time.getText().toString());
         }
         if(date != null)
         {
-            intent.putExtra("date",date.getText().toString());
+            intentGo.putExtra("date",date.getText().toString());
         }
-        startActivity(intent);
+        /////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////
+        startActivity(intentGo);
 
     }
 
