@@ -17,7 +17,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
     private EditText PasswordInputId;
     private Button  SubmitButtonId;
     public static final String EXTRA_MESSAGE = "com.admin.passwordchecker";
-    private String username = "jzyirek";
+    private String username = "cisp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,7 +35,7 @@ public class PasswordCheckerActivity extends AppCompatActivity implements OnClic
 
     public void verifyPassword()
     {
-        String validPassword = "calculate";
+        String validPassword = "cisp";
         String userIdTest = UsernameInputId.getText().toString();
         String passwordIdTest = PasswordInputId.getText().toString();
 

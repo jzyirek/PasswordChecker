@@ -13,7 +13,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
 {
     private Button linkToApp;
-    private String timeSelected;
+    private String selectedTimeSave;
     private String dateSelected;
     private String nameToSave;
     private String emailToSave;
@@ -31,12 +31,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         NextId.setOnClickListener(this);
         linkToApp.setOnClickListener(this);
-        Intent emailInfo = new Intent();
 
-        timeSelected = emailInfo.getStringExtra("time");
-        dateSelected = emailInfo.getStringExtra("date");
-        nameToSave = emailInfo.getStringExtra("nameToSave");
-        emailToSave = emailInfo.getStringExtra("emailToSave");
+        Intent intentG = getIntent();
+        dateSelected = intentG.getStringExtra("date");
+        selectedTimeSave = intentG.getStringExtra("time");
+        nameToSave = intentG.getStringExtra("nameToSave");
+        emailToSave = intentG.getStringExtra("emailToSave");
     }
 
     @Override
@@ -44,19 +44,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     {
         if(view.getId() == R.id.NextId)
         {
+            String app = "https://play.google.com/store/apps/details?id=com.admin.finalproject";
+            String [] to = {"abmukarram@gmail.com"};
+            String [] cc = {emailToSave};
+            String text = nameToSave;
+
+            text += " you have an appointment on " + dateSelected + " at " + selectedTimeSave + "\n" + app;
+
             Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
             emailIntent.setData(Uri.parse("mailto:"));
-            String [] to = {"abmukarram@gmail.com"};
-            String text = nameToSave;
-            text.concat(" you have an appointment on ");
-            text.concat(dateSelected);
-            text.concat(" at ");
-            text.concat(timeSelected);
-
             emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
+            emailIntent.putExtra(Intent.EXTRA_CC,cc);
             emailIntent.putExtra(Intent.EXTRA_SUBJECT," Sent from my app!");
             emailIntent.putExtra(Intent.EXTRA_TEXT,text);
-            //emailIntent.putExtra(Intent.EXTRA_TEXT, nameToSave + " You have an appointment on " + dateSelected + " at " + timeSelected);
             emailIntent.setType("message/rfc822");
 
             try {
